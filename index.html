@@ -57,13 +57,13 @@ const baseProducts=[
 const colors=['Preto','Branco','Cinza','Azul lavado','Azul escuro','Bege','Marrom','Verde oliva','Vinho','Rosa claro','Creme','Grafite','Lavanda','Vermelho','Caramelo','Listrado','Estonado','Vintage','Areia'];
 const editions=['essencial','street','vintage','washed','minimal','urban','daily','utility','soft','classic','oversized','night','basic','retro','sport','studio','premium','casual'];
 const products=[...baseProducts];
-const imagePool=baseProducts.map(p=>p.img);
+const imagePool=[...new Set(baseProducts.map(p=>p.img))];
 for(let i=products.length;i<500;i++){
  const base=baseProducts[(i*7+Math.floor(i/11))%baseProducts.length];
  const color=colors[(i*3+Math.floor(i/5))%colors.length];
  const edition=editions[(i*5+Math.floor(i/9))%editions.length];
  const price=Math.round((base.price+((i%9)-4)*4.5)*100)/100;
- products.push({...base,id:i+1,name:base.name+' '+color+' '+edition,img:imagePool[(i*11+Math.floor(i/3))%imagePool.length],price:Math.max(29.9,price),old:Math.max(39.9,Math.round((price+20+((i%4)*5))*100)/100),tag:i%7===0?'NOVO DROP':i%5===0?'BEST-SELLER':base.tag});
+ products.push({...base,id:i+1,name:base.name+' '+color+' '+edition,img:imagePool[(i*7+Math.floor(i/5))%imagePool.length],price:Math.max(29.9,price),old:Math.max(39.9,Math.round((price+20+((i%4)*5))*100)/100),tag:i%7===0?'NOVO DROP':i%5===0?'BEST-SELLER':base.tag});
 }
 let page=1;const pageSize=40;
 let cart=[],favorites=new Set(),category='Todos',favoritesOnly=false,searchTerm='';
