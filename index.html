@@ -58,7 +58,7 @@ const colors=['Preto','Branco','Cinza','Azul lavado','Azul escuro','Bege','Marro
 const editions=['essencial','street','vintage','washed','minimal','urban','daily','utility','soft','classic','oversized','night','basic','retro','sport','studio','premium','casual'];
 const products=[...baseProducts];
 const imagePool=[...new Set(baseProducts.map(p=>p.img))];
-for(let i=products.length;i<500;i++){
+for(let i=products.length;i<50;i++){
  const base=baseProducts[(i*7+Math.floor(i/11))%baseProducts.length];
  const color=colors[(i*3+Math.floor(i/5))%colors.length];
  const edition=editions[(i*5+Math.floor(i/9))%editions.length];
